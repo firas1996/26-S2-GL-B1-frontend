@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
+import axios from "axios";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -12,6 +13,25 @@ const Login = () => {
     setUserData({ ...userData, [name]: value });
   };
   const loginHandler = () => {
+    axios
+      .post("http://localhost:1122/users/signin", {
+        email: userData.email,
+        password: userData.password,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    // axios
+    //   .get("http://localhost:1122/users")
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
     console.log(userData);
     setUserData({
       email: "",
