@@ -4,11 +4,11 @@ const Login = () => {
   return (
     <div className="container">
       <div>
-        <div>
+        <div className="divInp">
           <label>Email</label>
           <input type="text" />
         </div>
-        <div>
+        <div className="divInp">
           <label>Password</label>
           <input type="password" />
         </div>
