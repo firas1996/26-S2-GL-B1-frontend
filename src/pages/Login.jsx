@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handelChange = ({ target }) => {
     const { name, value } = target;
@@ -20,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        setIsLoggedIn(true);
+        navigate("/");
       })
       .catch((e) => {
         console.log(e);
