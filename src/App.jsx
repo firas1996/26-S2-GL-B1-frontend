@@ -26,7 +26,7 @@ const App = () => {
       {/* <h1>test</h1> */}
       {/* <h1>{y}</h1>
       <FirstComp name={name} getData={getData} />*/}
-      {isLoggedIn ? <Home /> : <Login />}
+      {isLoggedIn ? <Home /> : <Login setIsLoggedIn={setIsLoggedIn} />}
       {/* <Login /> */}
       {/* <Home /> */}
     </MyFrag>
