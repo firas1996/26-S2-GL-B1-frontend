@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
   const usersItem = usersList.map((item) => {
     return (
-      <Link>
+      <Link to={`/users/details/${item.id}`}>
         <li>{item.name}</li>
       </Link>
     );
