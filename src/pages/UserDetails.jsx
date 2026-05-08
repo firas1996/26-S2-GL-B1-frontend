@@ -1,23 +1,16 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import UsersStore from "../Store/userContext";
 
 const UserDetails = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
+  const { getUserById } = useContext(UsersStore);
   useEffect(() => {
-    axios
-      .get(`http://localhost:1122/users/${id}`)
-      .then((res) => {
-        setUser({
-          name: res.data.data.user.name,
-          email: res.data.data.user.email,
-        });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    setUser(getUserById(id));
   }, []);
+
+  console.log(user);
   return (
     <div>
       <h1>User Name: {user.name} </h1>

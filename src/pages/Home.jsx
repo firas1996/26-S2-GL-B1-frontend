@@ -1,23 +1,21 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UsersStore from "../Store/userContext";
 
 const Home = () => {
   const navigate = useNavigate();
   const [usersList, setUsersList] = useState([]);
+  const { users } = useContext(UsersStore);
   useEffect(() => {
-    axios
-      .get("http://localhost:1122/users")
-      .then((res) => {
-        const users = res.data.data.users.map((item) => {
-          return { id: item._id, name: item.name };
-        });
-        setUsersList(users);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    // console.log(users)
+    setUsersList(
+      users.map((item) => {
+        return { id: item._id, name: item.name };
+      }),
+    );
   }, []);
+  console.log(usersList);
   const usersItem = usersList.map((item) => {
     return (
       <Link to={`/users/details/${item.id}`}>

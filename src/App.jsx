@@ -13,9 +13,7 @@ const App = () => {
     if (token) {
       navigate("/");
     }
-    console.log("effect");
   }, []);
-  console.log("outside");
 
   return (
     <>
